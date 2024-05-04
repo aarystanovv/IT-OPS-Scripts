@@ -1,0 +1,31 @@
+{
+	"dashboard": {
+		"id": null,
+		"title": "Server Performance",
+		"panels": [
+			{
+				"title": "CPU Usage",
+				"type": "graph",
+				"targets": [
+					{
+						"expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+						"legendFormat": "{{instance}}",
+						"refId": "A"
+					}
+				],
+				"yaxes": [
+					{
+						"format": "percent"
+					}
+				],
+				"datasource": "Prometheus"
+			}
+		],
+		"time": {
+			"from": "now-6h",
+			"to": "now"
+		},
+		"refresh": "5s"
+	},
+	"overwrite": false
+}
